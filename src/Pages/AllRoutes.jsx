@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import ProtectedRoutes from "../Components/ProtectedRoutes";
 import Login from "./Login";
+import Storage from "./Storage";
 
 const AllRoutes = () => {
   return (
@@ -10,7 +11,7 @@ const AllRoutes = () => {
         path="/"
         element={
           <ProtectedRoutes>
-            <>storage</>
+            <Storage></Storage>
           </ProtectedRoutes>
         }
       ></Route>
