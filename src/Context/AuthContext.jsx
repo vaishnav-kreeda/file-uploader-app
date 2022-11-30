@@ -5,7 +5,8 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
-import { auth } from "../firebase.js";
+import { auth, db } from "../firebase.js";
+import { doc, setDoc } from "firebase/firestore";
 
 export const AuthContext = createContext();
 export const AuthContextProvider = ({ children }) => {
@@ -32,6 +33,7 @@ export const AuthContextProvider = ({ children }) => {
       const token = credential.accessToken;
       const user = result.user;
       console.log(user);
+      //   setDoc(doc(db, "usersFile", user.uid), { Files: [] });
     });
   };
   return (
