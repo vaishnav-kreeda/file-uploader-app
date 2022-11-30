@@ -4,6 +4,7 @@ import {
   GoogleAuthProvider,
   signOut,
   onAuthStateChanged,
+  signInWithRedirect,
 } from "firebase/auth";
 import { auth, db } from "../firebase.js";
 import { doc, setDoc } from "firebase/firestore";
@@ -28,7 +29,7 @@ export const AuthContextProvider = ({ children }) => {
   };
   const googleLogin = () => {
     const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider).then((result) => {
+    signInWithRedirect(auth, provider).then((result) => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const user = result.user;
