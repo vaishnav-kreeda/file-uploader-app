@@ -1,5 +1,13 @@
-import { Box, Image, Text } from "@chakra-ui/react";
-import React from "react";
+import {
+  Box,
+  Button,
+  Image,
+  Input,
+  Text,
+  useDisclosure,
+} from "@chakra-ui/react";
+import React, { useState } from "react";
+import FileModal from "./FileModal";
 
 const Sections = ({ name, src }) => {
   return (
@@ -22,6 +30,13 @@ const Sections = ({ name, src }) => {
 };
 
 const SideBar = () => {
+  const [file, setFile] = useState();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [uploading, setUploading] = useState();
+  const handleFile = (event) => {
+    setFile(event.target.files[0]);
+    console.log(event.target.files[0]);
+  };
   return (
     <Box
       w="22vw"
@@ -48,9 +63,19 @@ const SideBar = () => {
         <Box fontSize="30px" color="#4284F3">
           +
         </Box>
-        <Text fontSize="18px" fontWeight="600" color="#4284F3" ml={2} mt={1}>
-          Add File
-        </Text>
+
+        {/* <Button
+          bgColor="#FFFFFF"
+          fontSize="18px"
+          fontWeight="600"
+          color="#4284F3"
+          ml={2}
+          mt={1}
+          onClick={onOpen}
+        > */}
+        {/* Add File
+        </Button> */}
+        <FileModal></FileModal>
       </Box>
       <Box w="full">
         <Box
